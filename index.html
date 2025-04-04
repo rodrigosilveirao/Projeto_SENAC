@@ -7,22 +7,55 @@
     <title>Controle de Estoque</title>
 </head>
 <body>
-    <header>
+   
+    <header id="header">
         <nav>
             <h1>Controle de Estoque</h1>
-            <button>Painel</button>
-            <button>Estoque</button>
+            <button id="painelBtn" onclick="mostrarBody1()" >Painel</button>
+            <button id="estoqueBtn" onclick="mostrarBody2()" >Estoque</button>
         </nav>
     </header>
+    
+<div id="body1">
+    <div id="main1">
+        <div id="main">
+            <div id="valorTotal">valorTotal</div>
+            <div id="estoque">estoque</div>
+        </div>
+    
+            <div id="main2">
+                <div id="entradas">entradas</div>
+                <div id="saidas">saidas</div>
+                <div id="limiteCritico">limiteCritico</div>
+            </div>
+    
+            <div id="tabelaCritico">tabelaCritico</div>
+        
+    </div>
+   </div>
 
-    <div id="main">
-        <div id="valorTotal">valorTotal</div>
-        <div id="estoque">estoque</div>
-        <div id="entradas">entradas</div>
-        <div id="saidas">saidas</div>
-        <div id="limiteCritico">limiteCritico</div>
-        <div id="tabelaCritico">tabelaCritico</div>
+
+
+
+    <div id="body2">
+        <div id="mainBody2">
+            <div id="cadastro">cadastro</div>
+            <div id="entrada">entrada</div>
+            <div id="saida"> saida</div>
+        </div>
+
+        <div id="colunas">
+
+        </div>
+
+
+
+
     </div>
 
+
+
+
+    <script src="script.js"></script>
 </body>
 </html>
