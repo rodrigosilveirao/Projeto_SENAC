@@ -17,6 +17,7 @@ function mostrarBody2() {
     
     body1.style.display = 'none';
     body2.style.display = 'block';
+    console.log('Diego')
 }
 
 
