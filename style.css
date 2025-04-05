@@ -1,32 +1,27 @@
 *{
-    margin: 0 0 10px ;
-    padding: 0;
-    gap: 10px;
-}
+    margin: 5px;
+   
 
 #header{
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-    background: linear-gradient(to bottom, purple, blue); 
+    background:linear-gradient(pink, rgba(194, 109, 151, 0.658),rgba(204, 51, 171, 0.842), rgb(163, 142, 142)
+    );
 }
-
-body{
-    background-color: gray;
-    padding: 10px;
 
 }
 
 #body1, #body2 {
     display: none; 
+ 
 }
 
 
 #body1 {
     display: block;
 }
-
 button{
     width: 250px;
     height: 50px;
@@ -35,20 +30,20 @@ button{
 
 #main, #main2{
     display: flex;
-
 }
 
 #valorTotal{
     width: 50%;
     height: 250px;
     background-color: rgb(60, 255, 0);
-
+    border-radius: 20px;
 }
 
 #estoque{
     width: 50%;
     height: 250px;
     background-color: rgb(208, 255, 0);
+    border-radius: 20px;
 }
        
 #entradas{
@@ -74,6 +69,11 @@ button{
     height: 250px;
     background-color: rgb(80, 54, 54);
 }
+
+
+
+
+
 
 
 #mainBody2{
