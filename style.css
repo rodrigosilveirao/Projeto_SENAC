@@ -10,6 +10,7 @@
     text-align: center;
     align-items: center;
     background: linear-gradient(to bottom, purple, blue); 
+  
 }
 
 body{
@@ -31,6 +32,12 @@ button{
     width: 250px;
     height: 50px;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
 }
 
 #main, #main2{
