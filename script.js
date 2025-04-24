@@ -88,7 +88,7 @@ function exibirProdutos (){
         let row = tabela.insertRow();
         row.insertCell(0).innerText = produto.nome;        
         row.insertCell(1).innerHTML = `${produto.quantidade}
-        <button onclick="alterarQuantidade('${produto.codigo}', ${produto.quantidade})">Entrada</button>`;
+        <button onclick="alterarQuantidade('${produto.codigo}', ${produto.quantidade})">+</button>`;
 
         row.insertCell(2).innerText = produto.limiteCritico;
         row.insertCell(3).innerText = produto.dataEntrada;
@@ -108,7 +108,6 @@ function alterarQuantidade(codigo, quantidadeAtual) {
 
     document.getElementById('quantidadeAtual').textContent = quantidadeAtual;
 
-    
 
   }
 
@@ -121,6 +120,25 @@ function alterarQuantidade(codigo, quantidadeAtual) {
     produtos = produtos.map(produto => {
         if (produto.codigo === document.getElementById('entradaCodigo').value) {
             produto.quantidade += quantidadeAdicionar; 
+        }
+        return produto;
+    });
+
+    localStorage.setItem("produtos", JSON.stringify(produtos));
+
+    exibirProdutos();
+    fecharAltera();
+}
+
+function salvarEntrada() {
+    let quantidadeAdicionar = parseInt(document.getElementById('quantidadeAdicionar').value);
+
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+
+    produtos = produtos.map(produto => {
+        if (produto.codigo === document.getElementById('entradaCodigo').value) {
+            produto.quantidade -= quantidadeAdicionar; 
         }
         return produto;
     });
