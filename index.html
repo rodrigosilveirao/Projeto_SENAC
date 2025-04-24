@@ -39,13 +39,36 @@
 
     <div id="body2">
         <div id="mainBody2">
-            <div id="cadastro">cadastro</div>
-            <div id="entrada">entrada</div>
-            <div id="saida"> saida</div>
+            <div id="cadastro">
+                <button onclick="abrirModal()" id="btnCadastrar" > Cadastrar                    
+                </button>
+            </div>
+            <div id="entrada">
+                <button onclick="abrirAlteracao()" id="btnEntrada">
+                    Entrada
+                </button>
+            </div>
+            <div id="saida"> 
+                <button id="btnSaida">
+                    Saida
+                </button>
+            </div>
         </div>
 
         <div id="colunas">
-
+            
+            <table id="tabela">
+                <tr>
+                    <th>Produtos</th>
+                    <th>Quantidade</th>
+                    <th>Limite Crítico</th>
+                    <th>Entrada</th>
+                    <th>Vencimento</th>
+                    <th>Unitário (R$)</th>
+                    <th>Venda (R$)</th>
+                    <th>Código</th>
+                </tr>
+            </table>
         </div>
 
 
@@ -53,6 +76,39 @@
 
     </div>
 
+    <div id="modal">
+        <div id="modal-content">
+          <span class="close" onclick="fecharModal()">&times;</span>
+          <h3>Cadastrar Produto</h3>
+      
+          <input type="text" id="nome" placeholder="Nome do produto">
+          <p>Data entrada:</p>
+          <input type="date" id="dataEntrada" placeholder="Data de entrada">
+          <p>Data vencimento:</p>
+          <input type="date" id="dataVencimento" placeholder="Data de vencimento">
+          <input type="number" id="quantidade" placeholder="Quantidade">
+          <input type="number" id="limiteCritico" placeholder="Limite crítico">
+          <input type="number" id="valorUnitario"  placeholder="Valor unitário (R$)">
+          <input type="number" id="valorVenda" placeholder="Valor de venda (R$)">
+          <input type="text" id="codigo" placeholder="Código do produto">
+          
+          <button onclick="cadastrar()">Cadastrar</button>
+        </div>
+      </div>
+
+
+
+      <div id="modalEntrada" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="fecharEntrada()">&times;</span>
+          <h3>Adicionar Estoque</h3>
+          <p>Quantidade atual: <strong id="quantidadeAtual"></strong></p>
+          <input type="number" id="quantidadeAdicionar" placeholder="Unidades a adicionar" />
+          <input type="hidden" id="entradaCodigo" />
+          <button onclick="salvarEntrada()">Salvar</button>
+          <button onclick="fecharEntrada()">Cancelar</button>
+        </div>
+      </div>
 
 
 

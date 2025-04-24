@@ -8,7 +8,6 @@ function mostrarBody1() {
     body2.style.display = 'none';
 }
 
-
 function mostrarBody2() {
     let painelBtn = document.getElementById('painelBtn');
     let estoqueBtn = document.getElementById('estoqueBtn');
@@ -19,4 +18,93 @@ function mostrarBody2() {
     body2.style.display = 'block';
 }
 
+function abrirModal() {
+    document.getElementById('modal').style.display = 'block';
+  }
 
+  function fecharModal() {
+    document.getElementById('modal').style.display = 'none';
+    document.querySelectorAll('#modal input').forEach(input => input.value = '');
+}
+
+function cadastrar(){
+    const produto = {
+        nome: document.getElementById('nome').value,
+        dataEntrada: document.getElementById('dataEntrada').value,
+        dataVencimento: document.getElementById('dataVencimento').value,
+        quantidade: parseInt(document.getElementById('quantidade').value),
+        limiteCritico: parseInt(document.getElementById('limiteCritico').value),
+        valorUnitario: parseFloat(document.getElementById('valorUnitario').value),
+        valorVenda: parseFloat(document.getElementById('valorVenda').value),
+        codigo: document.getElementById('codigo').value
+  }
+
+
+
+  
+
+    // Recupera uma lista chamadas produtos do localStorage, se essa lista na oexisteir ele cria uma nova
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+    // Adiciona um novo produto
+    produtos.push({nome: document.getElementById('nome').value,
+        dataEntrada: document.getElementById('dataEntrada').value,
+        dataVencimento: document.getElementById('dataVencimento').value,
+        quantidade: parseInt(document.getElementById('quantidade').value),
+        limiteCritico: parseInt(document.getElementById('limiteCritico').value),
+        valorUnitario: parseFloat(document.getElementById('valorUnitario').value),
+        valorVenda: parseFloat(document.getElementById('valorVenda').value),
+        codigo: document.getElementById('codigo').value});
+
+    //Salvar de volta no localStorage   lista para JSON
+    localStorage.setItem("produtos", JSON.stringify(produtos));
+
+
+    exibirProdutos();
+    fecharModal();
+}
+
+function exibirProdutos (){
+
+    let tabela = document.getElementById("tabela");
+    tabela.innerHTML = `
+        <tr>
+            <th>Produtos</th>
+            <th>Quantidade</th>
+            <th>Limite Crítico</th>
+            <th>Entrada</th>
+            <th>Vencimento</th>
+            <th>Unitário (R$)</th>
+            <th>Venda (R$)</th>
+            <th>Código</th>
+        </tr>
+        `;
+
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    
+    produtos.forEach((produto) =>  {
+        let row = tabela.insertRow();
+        row.insertCell(0).innerText = produto.nome;        
+        row.insertCell(1).innerHTML = row.insertCell(1).innerHTML = `${produto.quantidade}
+        <button onclick="abrirEntrada('${produto.codigo}', ${produto.quantidade})">Entrada</button>
+    `;  
+        row.insertCell(2).innerText = produto.limiteCritico;
+        row.insertCell(3).innerText = produto.dataEntrada;
+        row.insertCell(4).innerText = produto.dataVencimento;
+        row.insertCell(5).innerText = produto.valorUnitario;
+        row.insertCell(6).innerText = produto.valorVenda;
+        row.insertCell(7).innerText = produto.codigo;
+    });
+
+}
+
+
+function salvarEntrada(){
+   
+}
+
+
+
+
+
+window.onload = exibirProdutos;

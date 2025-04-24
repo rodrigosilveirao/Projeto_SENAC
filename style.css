@@ -4,6 +4,16 @@
     gap: 10px;
 }
 
+
+tr, th {
+    text-align: center;
+    padding: 8px;
+}
+
+#tabela{
+    width: 100%;
+}
+
 #header{
     display: flex;
     justify-content: center;
@@ -109,3 +119,40 @@ button:hover{
     height: 250px;
     background-color: rgb(255, 174, 0);
 }
+
+
+
+ #modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    #modal-content {
+      background-color: white;
+      padding: 20px;
+      margin: auto;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #modal-content input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      display: flex;
+      
+      align-items: center;
+    }
+
+    .close {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+    }
