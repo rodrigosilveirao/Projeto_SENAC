@@ -1,23 +1,3 @@
-function mostrarBody1() {
-    let painelBtn = document.getElementById('painelBtn');
-    let estoqueBtn = document.getElementById('estoqueBtn');
-    let body1 = document.getElementById('body1');
-    let body2 = document.getElementById('body2');
-
-    body1.style.display = 'block';
-    body2.style.display = 'none';
-}
-
-function mostrarBody2() {
-    let painelBtn = document.getElementById('painelBtn');
-    let estoqueBtn = document.getElementById('estoqueBtn');
-    let body1 = document.getElementById('body1');
-    let body2 = document.getElementById('body2');
-    
-    body1.style.display = 'none';
-    body2.style.display = 'block';
-}
-
 function abrirModal() {
     document.getElementById('modal').style.display = 'block';
   }
@@ -119,8 +99,14 @@ function alterarQuantidade(codigo, quantidadeAtual) {
 
     produtos = produtos.map(produto => {
         if (produto.codigo === document.getElementById('entradaCodigo').value) {
-            produto.quantidade += quantidadeAdicionar; 
+            if (alteracao.value === "Entrada"){
+                produto.quantidade += quantidadeAdicionar;
+            } else {
+                produto.quantidade -= quantidadeAdicionar;
+            }
         }
+
+
         return produto;
     });
 
@@ -130,24 +116,6 @@ function alterarQuantidade(codigo, quantidadeAtual) {
     fecharAltera();
 }
 
-function salvarEntrada() {
-    let quantidadeAdicionar = parseInt(document.getElementById('quantidadeAdicionar').value);
-
-    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-
-
-    produtos = produtos.map(produto => {
-        if (produto.codigo === document.getElementById('entradaCodigo').value) {
-            produto.quantidade -= quantidadeAdicionar; 
-        }
-        return produto;
-    });
-
-    localStorage.setItem("produtos", JSON.stringify(produtos));
-
-    exibirProdutos();
-    fecharAltera();
-}
 
 
   

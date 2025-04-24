@@ -9,49 +9,22 @@
 <body>
    
     <header id="header">
-        <nav>
-            <h1>Controle de Estoque</h1>
-            <button id="painelBtn" onclick="mostrarBody1()" >Painel</button>
-            <button id="estoqueBtn" onclick="mostrarBody2()" >Estoque</button>
-        </nav>
+      <h1>Controle de Estoque</h1>         
     </header>
-    
-<div id="body1">
-    <div id="main1">
-        <div id="main">
-            <div id="valorTotal">valorTotal</div>
-            <div id="estoque">estoque</div>
-        </div>
-    
-            <div id="main2">
-                <div id="entradas">entradas</div>
-                <div id="saidas">saidas</div>
-                <div id="limiteCritico">limiteCritico</div>
-            </div>
-    
-            <div id="tabelaCritico">tabelaCritico</div>
-        
-    </div>
-   </div>
-
-
 
 
     <div id="body2">
+        <div id="cadastro">
+            <button onclick="abrirModal()" id="btnCadastrar" > Cadastrar                    
+            </button>
+        </div>
         <div id="mainBody2">
-            <div id="cadastro">
-                <button onclick="abrirModal()" id="btnCadastrar" > Cadastrar                    
-                </button>
-            </div>
+            
             <div id="entrada">
-                <button onclick="abrirAlteracao()" id="btnEntrada">
-                    Entrada
-                </button>
+                <h1>entrada</h1>
             </div>
             <div id="saida"> 
-                <button id="btnSaida">
-                    Saida
-                </button>
+                <h1>saida</h1>
             </div>
         </div>
 
@@ -87,7 +60,7 @@
           <p>Data vencimento:</p>
           <input type="date" id="dataVencimento" placeholder="Data de vencimento">
           <input type="number" id="quantidade" placeholder="Quantidade">
-          <input type="number" id="limiteCritico" placeholder="Limite crítico">
+          <input type="number" id="limiteCritico" placeholder="Limite crítico" >
           <input type="number" id="valorUnitario"  placeholder="Valor unitário (R$)">
           <input type="number" id="valorVenda" placeholder="Valor de venda (R$)">
           <input type="text" id="codigo" placeholder="Código do produto">
@@ -99,10 +72,13 @@
 
 
       <div id="modalEntrada" class="modal">
-        <div class="modal-content">
+        <div id="modalEntrada-content">
           <span class="close" onclick="fecharAltera()">&times;</span>
           <h3>Adicionar Estoque</h3>
-          <p><strong id="nome"> </strong></p>
+          <select name="alteracao" id="alteracao">
+            <option value="Entrada">Entrada</option>
+            <option value="Saida">Saida</option>
+          </select>
           <p>Quantidade atual: <strong id="quantidadeAtual"></strong></p>
           <input type="number" id="quantidadeAdicionar" placeholder="Unidades a adicionar" />
           <input type="hidden" id="entradaCodigo" />
