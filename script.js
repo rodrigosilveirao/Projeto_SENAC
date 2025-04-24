@@ -27,6 +27,8 @@ function abrirModal() {
     document.querySelectorAll('#modal input').forEach(input => input.value = '');
 }
 
+
+
 function cadastrar(){
     const produto = {
         nome: document.getElementById('nome').value,
@@ -85,9 +87,9 @@ function exibirProdutos (){
     produtos.forEach((produto) =>  {
         let row = tabela.insertRow();
         row.insertCell(0).innerText = produto.nome;        
-        row.insertCell(1).innerHTML = row.insertCell(1).innerHTML = `${produto.quantidade}
-        <button onclick="abrirEntrada('${produto.codigo}', ${produto.quantidade})">Entrada</button>
-    `;  
+        row.insertCell(1).innerHTML = `${produto.quantidade}
+        <button onclick="alterarQuantidade('${produto.codigo}', ${produto.quantidade})">Entrada</button>`;
+
         row.insertCell(2).innerText = produto.limiteCritico;
         row.insertCell(3).innerText = produto.dataEntrada;
         row.insertCell(4).innerText = produto.dataVencimento;
@@ -99,8 +101,42 @@ function exibirProdutos (){
 }
 
 
-function salvarEntrada(){
-   
+
+function alterarQuantidade(codigo, quantidadeAtual) {
+    document.getElementById('modalEntrada').style.display = 'block';
+    document.getElementById('entradaCodigo').value = codigo;
+
+    document.getElementById('quantidadeAtual').textContent = quantidadeAtual;
+
+    
+
+  }
+
+  function salvarEntrada() {
+    let quantidadeAdicionar = parseInt(document.getElementById('quantidadeAdicionar').value);
+
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+
+    produtos = produtos.map(produto => {
+        if (produto.codigo === document.getElementById('entradaCodigo').value) {
+            produto.quantidade += quantidadeAdicionar; 
+        }
+        return produto;
+    });
+
+    localStorage.setItem("produtos", JSON.stringify(produtos));
+
+    exibirProdutos();
+    fecharAltera();
+}
+
+
+  
+  function fecharAltera() {
+    document.getElementById('modalEntrada').style.display = 'none';
+    document.querySelectorAll('#modal input').forEach(input => input.value = '');
+    document.getElementById('quantidadeAdicionar').value='';
 }
 
 

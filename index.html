@@ -100,13 +100,13 @@
 
       <div id="modalEntrada" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="fecharEntrada()">&times;</span>
+          <span class="close" onclick="fecharAltera()">&times;</span>
           <h3>Adicionar Estoque</h3>
+          <p><strong id="nome"> </strong></p>
           <p>Quantidade atual: <strong id="quantidadeAtual"></strong></p>
           <input type="number" id="quantidadeAdicionar" placeholder="Unidades a adicionar" />
           <input type="hidden" id="entradaCodigo" />
           <button onclick="salvarEntrada()">Salvar</button>
-          <button onclick="fecharEntrada()">Cancelar</button>
         </div>
       </div>
 

@@ -122,7 +122,7 @@ button:hover{
 
 
 
- #modal {
+ #modal, #modalEntrada {
       display: none;
       position: fixed;
       z-index: 1000;
@@ -133,7 +133,7 @@ button:hover{
       background-color: rgba(0,0,0,0.5);
     }
 
-    #modal-content {
+    #modal-content,#modalEntrada {
       background-color: white;
       padding: 20px;
       margin: auto;
@@ -156,3 +156,5 @@ button:hover{
       font-size: 20px;
       cursor: pointer;
     }
+
+    
