@@ -1,137 +1,260 @@
-*{
-    margin: 0 0 10px ;
-    padding: 0;
-    gap: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-tr, th {
-    text-align: center;
-    padding: 8px;
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1a032a, #400245);
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-#tabela{
-    width: 100%;
+#header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-#header{
-    display: flex;
+#header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px #000000;
+}
+
+div#cadastro{
     justify-content: center;
-    text-align: center;
+    display: flex;
     align-items: center;
-    background: linear-gradient(to bottom, purple, blue); 
-  
 }
 
-body{
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-
-}
-
-
-button{
-    width: 250px;
-    height: 50px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-button:hover{
-    background-color: rgba(47, 60, 241, 0.5);
-    color: white;
-}
-
-#main, #main2{
-    display: flex;
+#btnCadastrar {
+  background: #6b0a47;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 20px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
 
 }
 
-
-#mainBody2{
-    display: flex;
+#entradaCss, #saidaCss {
+    text-align: center;
+    padding-bottom: 20px;
 }
 
-#cadastro{
-    width: 100%;
-    height: 250px;
-    background-color: rgb(184, 182, 177);
-}
-#entrada{
-    width: 50%;
-    height: 250px;
-    background-color: rgb(184, 182, 177);
+#btnCadastrar:hover {
+  background: #3a0022;
 }
 
-#saida{
-    width: 50%;
-    height: 250px;
-    background-color: rgb(184, 182, 177);
+#mainBody2 {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
-#colunas{
-    width: 100%;
-    height: 250px;
-    background-color: rgb(184, 182, 177);
+#entrada, #saida {
+  background: rgba(255, 30, 173, 0.2);
+  border: 1px solid #000000;
+  border-radius: 12px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 1px 2px 3px black;
 }
 
+#entrada h1, #saida h1 {
+  font-size: 1.5rem;
+  font-family: monospace;
+  text-shadow: 1px 2px 3px black;
+}
 
+#colunas {
+  overflow-x: auto;
+}
+
+#tabela {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#tabela th, #tabela td {
+  border: px solid rgba(255, 0, 157, 0.5);
+  padding: 15px;
+  text-align: center;
+}
+
+#tabela th {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #750066;
+  font-size: 1rem;
+  text-shadow: 1px 1px 7px #000000;
+}
+
+#tabela td {
+  font-size: 0.95rem;
+}
+
+#tabela button {
+  background: #990061;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 1px 2px 3px black;
+}
+
+#tabela button:hover {
+  background: #ffffff;
+  color: #ff1ead;
+}
 
 #modal, #modalEntrada {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 51, 102, 0.5); /* azul escuro translúcido */
-  }
-  
-  #modal-content, #modalEntrada-content {
-    background-color: #ffffff;
-    padding: 24px;
-    margin: auto;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 500px;
-    border: 1px solid #cce0ff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-family: 'Segoe UI', sans-serif;
-    color: #003366;
-  }
-  
-  #modal-content input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #cce0ff;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    box-sizing: border-box;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  #modal-content input:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-  }
-  
-  .close {
-    float: right;
-    font-size: 22px;
-    font-weight: bold;
-    color: #003366;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .close:hover {
-    color: #007bff;
-  }
-  
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 3, 42, 0.9);
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
 
-    
+#modal-content, #modalEntrada-content {
+  background: #2a003d;
+  padding: 30px;
+  border-radius: 15px;
+  width: 300px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeInModal 0.3s ease;
+}
+
+#modal-content h3, #modalEntrada-content h3 {
+  text-align: center;
+  color: #ff6ec7;
+}
+
+#modal-content input, 
+#modal-content select,
+#modalEntrada-content input, 
+#modalEntrada-content select {
+  padding: 10px;
+  border: 1px solid #ff6ec7;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+}
+
+/* CORREÇÃO adicionada: opções visíveis no select */
+#modal-content select option,
+#modalEntrada-content select option {
+  background-color: #2a003d;
+  color: #ffffff;
+}
+
+#modal-content select option:hover,
+#modalEntrada-content select option:hover {
+  background-color: #ff1ead;
+  color: #ffffff;
+}
+
+#modal-content button, 
+#modalEntrada-content button {
+  background: #ff1ead;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#modal-content button:hover,
+#modalEntrada-content button:hover {
+  background: #ff63b8;
+}
+
+.close {
+  align-self: flex-end;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ff6ec7;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  #mainBody2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #entrada, #saida {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  #btnCadastrar {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  #tabela th, #tabela td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  #modal-content, #modalEntrada-content {
+    width: 90%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  #header h1 {
+    font-size: 2rem;
+  }
+
+  #btnCadastrar {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  #entrada h1, #saida h1 {
+    font-size: 1.3rem;
+  }
+
+  #tabela th, #tabela td {
+    font-size: 0.85rem;
+  }
+}

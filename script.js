@@ -18,12 +18,9 @@ function cadastrar(){
         limiteCritico: parseInt(document.getElementById('limiteCritico').value),
         valorUnitario: parseFloat(document.getElementById('valorUnitario').value),
         valorVenda: parseFloat(document.getElementById('valorVenda').value),
-        codigo: document.getElementById('codigo').value
+        codigo: document.getElementById('codigo').value     
   }
 
-
-
-  
 
     // Recupera uma lista chamadas produtos do localStorage, se essa lista na oexisteir ele cria uma nova
     let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
@@ -38,13 +35,32 @@ function cadastrar(){
         valorVenda: parseFloat(document.getElementById('valorVenda').value),
         codigo: document.getElementById('codigo').value});
 
+        
     //Salvar de volta no localStorage   lista para JSON
     localStorage.setItem("produtos", JSON.stringify(produtos));
 
 
     exibirProdutos();
     fecharModal();
+    somaProdutos();
+    
 }
+
+
+function somaProdutos(){
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    let somaQuantidade = 0;
+    let somaValor = 0;
+    for (let produto of produtos){
+        somaQuantidade += produto.quantidade;
+        somaValor += produto.valorUnitario;
+    }
+    entrada.innerHTML = somaQuantidade;
+    saida.innerHTML = somaValor;
+    
+}
+
+
 
 function exibirProdutos (){
 
@@ -68,18 +84,58 @@ function exibirProdutos (){
         let row = tabela.insertRow();
         row.insertCell(0).innerText = produto.nome;        
         row.insertCell(1).innerHTML = `${produto.quantidade}
-        <button onclick="alterarQuantidade('${produto.codigo}', ${produto.quantidade})">+</button>`;
+        <button onclick="alterarQuantidade('${produto.codigo}', ${produto.quantidade})">+ -</button>`;
 
         row.insertCell(2).innerText = produto.limiteCritico;
         row.insertCell(3).innerText = produto.dataEntrada;
         row.insertCell(4).innerText = produto.dataVencimento;
         row.insertCell(5).innerText = produto.valorUnitario;
         row.insertCell(6).innerText = produto.valorVenda;
-        row.insertCell(7).innerText = produto.codigo;
+        row.insertCell(7).innerHTML = `${produto.codigo} 
+        <button onclick="removerProduto('${produto.codigo}')">Remover</button>` 
+
+
     });
 
+    somaProdutos();
+    alterarLC();
 }
 
+function alterarLC() {
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    let tabela = document.getElementById("tabela");
+    let linhas = tabela.getElementsByTagName("tr");
+
+    // Começamos de 1 para pular o cabeçalho
+    for (let i = 1; i < linhas.length; i++) {
+        let produto = produtos[i - 1];
+        if (!produto) continue;
+
+        let celulas = linhas[i].getElementsByTagName("td");
+
+        let quantidade = produto.quantidade;
+        let limiteCritico = produto.limiteCritico;
+
+        // Coluna 1 = Quantidade
+        if (quantidade <= limiteCritico) {
+            celulas[1].style.color = 'white';
+        } else {
+            celulas[1].style.color = 'red';
+        }
+    }
+}
+
+
+function removerProduto(codigo){
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+    produtos = produtos.filter(produto => produto.codigo !== codigo);
+    
+    localStorage.setItem("produtos", JSON.stringify(produtos));
+
+
+    exibirProdutos();
+}
 
 
 function alterarQuantidade(codigo, quantidadeAtual) {
